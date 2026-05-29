@@ -23,16 +23,19 @@ export async function submitAssessment(req, res, next) {
       await conn.execute('DELETE FROM user_skills WHERE user_id = ?', [user_id])
 
       for (const ans of answers) {
+        const optId = ans.selected_option_id || ans.option_id
         await conn.execute(
           'INSERT INTO user_answers (user_id, question_id, selected_option_id) VALUES (?, ?, ?)',
-          [user_id, ans.question_id, ans.selected_option_id]
+          [user_id, ans.question_id, optId]
         )
       }
 
       for (const sk of selected_skills) {
+        const skillId = typeof sk === 'object' ? sk.skill_id : sk
+        const isSelected = typeof sk === 'object' ? (sk.is_selected ? 1 : 0) : 1
         await conn.execute(
           'INSERT INTO user_skills (user_id, skill_id, is_selected) VALUES (?, ?, ?)',
-          [user_id, sk.skill_id, sk.is_selected ? 1 : 0]
+          [user_id, skillId, isSelected]
         )
       }
 

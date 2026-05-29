@@ -144,7 +144,14 @@ export default function Diagnosis() {
                   <div className="flex flex-wrap gap-stack-sm">
                     {top.skillGaps && top.skillGaps.length > 0 ? (
                       top.skillGaps.map((g, i) => (
-                        <span key={i} className="px-stack-sm py-1 bg-[#FFF1F2] text-[#E11D48] border border-[#E11D48]/30 font-label-sm text-label-sm">{g.skillName}</span>
+                        <span key={i} className={`px-stack-sm py-1 font-label-sm text-label-sm border rounded ${
+                          g.type === 'irrelevant'
+                            ? 'bg-orange-50 text-orange-600 border-orange-300'
+                            : 'bg-[#FFF1F2] text-[#E11D48] border-[#E11D48]/30'
+                        }`}>
+                          {g.skillName}
+                          {g.type === 'irrelevant' && ' (tidak relevan)'}
+                        </span>
                       ))
                     ) : (
                       <span className="text-body-sm text-on-surface-variant">Tidak ada kesenjangan signifikan</span>
