@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career Navigator - Inisialisasi Asesmen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#4f46e5", // Indigo-600
+                        "on-primary": "#ffffff",
+                        "primary-container": "#e0e7ff",
+                        "on-primary-container": "#312e81",
+                        "surface": "#fdf7ff",
+                        "on-surface": "#1d1b20",
+                        "surface-variant": "#e6e0e9",
+                        "on-surface-variant": "#494551",
+                        "outline": "#7a7582",
+                        "outline-variant": "#cbc4d2",
+                        "background": "#fdf7ff",
+                        "on-background": "#1d1b20",
+                        "surface-container-low": "#f8f2fa",
+                        "surface-container": "#f2ecf4",
+                        "surface-container-high": "#ece6ee",
+                        "inverse-surface": "#322f35",
+                        "inverse-on-surface": "#f5eff7",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "body": ["Inter", "sans-serif"],
+                        "headline": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .expert-grid {
+            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scan-line {
+            animation: scan 3s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-fast {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .scan-line, .animate-spin-fast, .animate-ping, .fade-in-up {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface border-b border-outline-variant fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="text-headline-md font-bold text-primary">
+                Career Navigator
+            </div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full" title="Help">help</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-low transition-colors rounded-full" title="Settings">settings</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden ml-2">
+<img alt="User avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzZZrOAH42bG_bM9lQKXtmkuoCTMvqSs8HzkwsI_dCVEI9d-1ZJFP3JYklOM_Gyeqgky4G3dSzsE5nxNOQL-5Q4zYrLEfoLkZvOXZS4NL6Jn_xc6dkbKZ2pt6Jv5vrA7qPPhIYEcbaU9-Q05209v3jjBTFAVGvN7CaAuHk4vS_qcKorxJ3a-lgr6XXrD2yO8aHYhPNkiqLqGmdzTwYsZHPwVpKGhxxT8_BzSgBujgsfw1NHezb4uWXJYudh88z9TNMpQaywPR-sZc"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-24 pb-stack-lg px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto w-full">
+<!-- Central Focus Area -->
+<section class="flex flex-col items-center text-center mb-stack-lg">
+<h1 class="text-headline-lg text-on-surface mb-stack-sm">Asesmen Siap Dimulai</h1>
+<p class="text-body-md text-on-surface-variant max-w-2xl leading-relaxed">
+                Sistem sedang melakukan kalibrasi instrumen asesmen interaktif berdasarkan profil profesional Anda. Proses ini melibatkan penyelarasan parameter penilaian dengan standar industri terkini untuk memastikan akurasi pemetaan kompetensi dan proyeksi jalur karier Anda secara presisi.
+            </p>
+</section>
+<!-- Expert Engine Visual -->
+<section class="relative mb-stack-lg flex flex-col items-center">
+<div class="w-full h-64 border border-outline-variant rounded-lg expert-grid relative overflow-hidden bg-white flex items-center justify-center">
+<!-- Abstract Data Processing Graphic -->
+<div class="relative w-48 h-48 flex items-center justify-center">
+<div class="absolute inset-0 border-2 border-primary/20 rounded-full animate-ping"></div>
+<div class="absolute inset-4 border-2 border-primary/40 rounded-full"></div>
+<div class="absolute inset-8 border border-primary/60 rounded-full"></div>
+<div class="z-10 bg-white p-4 rounded-lg border border-primary shadow-sm">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<!-- Animated Scanning Line -->
+<div class="absolute w-full h-1 bg-gradient-to-b from-transparent via-primary/30 to-transparent top-0 left-0 scan-line"></div>
+</div>
+<!-- Progress Overlay -->
+<div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm border border-outline-variant px-4 py-2 rounded-lg shadow-sm">
+<div class="flex items-center gap-3">
+<span class="text-label-md text-primary font-bold min-w-[40px] text-right" id="progress-percent">0%</span>
+<div class="w-32 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full transition-all duration-300 ease-out bg-primary" id="progress-bar" style="width: 0%;"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Status Checklist -->
+<section class="bg-white border border-outline-variant p-stack-md rounded-lg mb-stack-lg shadow-sm">
+<h3 class="text-label-sm text-on-surface-variant uppercase tracking-wider mb-stack-md border-b border-outline-variant pb-2">System Initialization Log</h3>
+<div class="space-y-stack-md" id="log-container">
+<!-- Item 1 -->
+<div class="flex items-center justify-between" id="log-item-1">
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-outline-variant icon-status">sync</span>
+<span class="text-body-md text-on-surface">Memuat basis data kompetensi...</span>
+</div>
+<span class="text-label-sm text-on-surface-variant font-bold status-text">PENDING</span>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between" id="log-item-2">
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-outline-variant icon-status">sync</span>
+<span class="text-body-md text-on-surface">Menyusun skenario situasi kerja...</span>
+</div>
+<span class="text-label-sm text-on-surface-variant font-bold status-text">PENDING</span>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between" id="log-item-3">
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-outline-variant icon-status">sync</span>
+<span class="text-body-md text-on-surface">Menyiapkan matriks penilaian...</span>
+</div>
+<span class="text-label-sm text-on-surface-variant font-bold status-text">PENDING</span>
+</div>
+</div>
+</section>
+<!-- Start Button Container (Initially Hidden) -->
+<div class="flex justify-center mb-stack-lg opacity-0 pointer-events-none" id="cta-container">
+<button class="bg-primary text-on-primary px-12 py-3.5 rounded-full text-label-md font-semibold hover:bg-indigo-700 transition-all shadow-md active:scale-95">Mulai Sekarang</button>
+</div>
+<!-- Technical Metrics -->
+<section class="grid grid-cols-2 gap-stack-md">
+<div class="border border-outline-variant p-stack-md rounded-lg flex flex-col items-center justify-center bg-white shadow-sm">
+<span class="text-label-sm text-on-surface-variant uppercase mb-1">Engine Status</span>
+<span class="text-label-md text-primary font-bold" id="engine-status">INITIALIZING</span>
+</div>
+<div class="border border-outline-variant p-stack-md rounded-lg flex flex-col items-center justify-center bg-white shadow-sm">
+<span class="text-label-sm text-on-surface-variant uppercase mb-1">Data Sync</span>
+<span class="text-label-md text-primary font-bold" id="sync-status">0%</span>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-outline-variant mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop py-8 max-w-container-max mx-auto gap-4">
+<div class="text-label-md font-bold text-primary">
+                Career Navigator Expert Systems
+            </div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-colors underline decoration-outline-variant underline-offset-4" href="#">Privacy Policy</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-colors underline decoration-outline-variant underline-offset-4" href="#">Terms of Service</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-colors underline decoration-outline-variant underline-offset-4" href="#">Documentation</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-colors underline decoration-outline-variant underline-offset-4" href="#">Support</a>
+</div>
+<div class="text-label-sm text-on-surface-variant">
+                © 2024 Career Navigator Expert Systems.
+            </div>
+</div>
+</footer>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('progress-bar');
+            const progressPercent = document.getElementById('progress-percent');
+            const syncStatus = document.getElementById('sync-status');
+            const engineStatus = document.getElementById('engine-status');
+            const ctaContainer = document.getElementById('cta-container');
+            
+            const logItems = [
+                { id: 'log-item-1', milestone: 30 },
+                { id: 'log-item-2', milestone: 60 },
+                { id: 'log-item-3', milestone: 90 }
+            ];
+
+            let currentProgress = 0;
+            const duration = 3500; // 3.5 seconds
+            const intervalTime = 30; // Update every 30ms
+            const step = 100 / (duration / intervalTime);
+
+            function updateLogItem(itemId, isProcessing) {
+                const item = document.getElementById(itemId);
+                const icon = item.querySelector('.icon-status');
+                const status = item.querySelector('.status-text');
+
+                if (isProcessing) {
+                    icon.classList.add('animate-spin-fast');
+                    icon.classList.remove('text-outline-variant');
+                    icon.classList.add('text-primary');
+                    status.innerText = 'PROCESSING';
+                    status.classList.remove('text-on-surface-variant');
+                    status.classList.add('text-primary');
+                } else {
+                    icon.classList.remove('animate-spin-fast');
+                    icon.classList.remove('text-primary');
+                    icon.classList.add('text-emerald-600');
+                    icon.innerText = 'check_circle';
+                    icon.style.fontVariationSettings = "'FILL' 1";
+                    
+                    status.innerText = 'COMPLETED';
+                    status.classList.remove('text-primary');
+                    status.classList.add('text-emerald-600');
+                }
+            }
+
+            const animation = setInterval(() => {
+                currentProgress += step;
+                
+                if (currentProgress >= 100) {
+                    currentProgress = 100;
+                    clearInterval(animation);
+                    completeAnimation();
+                }
+
+                const roundedProgress = Math.floor(currentProgress);
+                
+                // Update Progress Elements
+                progressBar.style.width = `${roundedProgress}%`;
+                progressPercent.innerText = `${roundedProgress}%`;
+                syncStatus.innerText = `${roundedProgress}%`;
+
+                // Update Logs based on milestones
+                logItems.forEach((item, index) => {
+                    const prevMilestone = index === 0 ? 0 : logItems[index-1].milestone;
+                    
+                    // Show processing
+                    if (roundedProgress > prevMilestone && roundedProgress <= item.milestone) {
+                        const status = document.getElementById(item.id).querySelector('.status-text').innerText;
+                        if (status === 'PENDING') {
+                            updateLogItem(item.id, true);
+                        }
+                    }
+                    
+                    // Show completed
+                    if (roundedProgress >= item.milestone) {
+                        const status = document.getElementById(item.id).querySelector('.status-text').innerText;
+                        if (status === 'PROCESSING') {
+                            updateLogItem(item.id, false);
+                        }
+                    }
+                });
+
+            }, intervalTime);
+
+            function completeAnimation() {
+                // Final state changes
+                progressBar.classList.remove('bg-primary');
+                progressBar.classList.add('bg-emerald-500');
+                engineStatus.innerText = 'OPTIMAL';
+                engineStatus.classList.remove('text-primary');
+                engineStatus.classList.add('text-emerald-600');
+
+                // Show CTA Button
+                ctaContainer.classList.remove('opacity-0', 'pointer-events-none');
+                ctaContainer.classList.add('fade-in-up');
+            }
+        });
+    </script>
+</body></html>

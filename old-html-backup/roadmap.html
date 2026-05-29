@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Career Navigator - Peta Jalan Upskilling Otomatis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .roadmap-line {
+            background: linear-gradient(to bottom, #cbc4d2 0%, #4f378a 50%, #cbc4d2 100%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#e9ddff",
+                      "outline": "#7a7582",
+                      "on-primary-fixed-variant": "#4f378a",
+                      "surface-dim": "#ded8e0",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f8f2fa",
+                      "tertiary-fixed-dim": "#e7c365",
+                      "on-surface-variant": "#494551",
+                      "secondary-container": "#e1d4fd",
+                      "inverse-on-surface": "#f5eff7",
+                      "on-background": "#1d1b20",
+                      "primary-fixed-dim": "#cfbcff",
+                      "surface-tint": "#6750a4",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#ece6ee",
+                      "surface-container": "#f2ecf4",
+                      "surface-bright": "#fdf7ff",
+                      "on-tertiary-fixed-variant": "#594400",
+                      "on-surface": "#1d1b20",
+                      "primary": "#4f378a",
+                      "on-secondary-fixed-variant": "#4b4263",
+                      "tertiary-container": "#c9a74d",
+                      "outline-variant": "#cbc4d2",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#6750a4",
+                      "inverse-surface": "#322f35",
+                      "error": "#ba1a1a",
+                      "background": "#fdf7ff",
+                      "tertiary-fixed": "#ffdf93",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed": "#e9ddff",
+                      "surface-container-highest": "#e6e0e9",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed": "#241a00",
+                      "surface-variant": "#e6e0e9",
+                      "on-secondary-fixed": "#1f1635",
+                      "on-tertiary-container": "#503d00",
+                      "on-primary-fixed": "#22005d",
+                      "on-primary": "#ffffff",
+                      "on-secondary-container": "#645a7d",
+                      "surface": "#fdf7ff",
+                      "secondary-fixed-dim": "#cdc0e9",
+                      "secondary": "#63597c",
+                      "on-primary-container": "#e0d2ff",
+                      "error-container": "#ffdad6",
+                      "inverse-primary": "#cfbcff",
+                      "tertiary": "#765b00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "stack-md": "16px",
+                      "margin-mobile": "16px",
+                      "stack-sm": "8px",
+                      "stack-lg": "32px",
+                      "margin-desktop": "40px",
+                      "gutter": "24px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-surface border-b border-outline-variant fixed top-0 w-full z-50 h-16">
+<div class="flex justify-between items-center px-margin-desktop w-full max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-stack-md">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">Career Navigator</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium font-label-md text-label-md hover:text-primary transition-colors" href="#">Profil</a>
+<a class="text-on-surface-variant font-medium font-label-md text-label-md hover:text-primary transition-colors" href="#">Asesmen</a>
+<a class="text-on-surface-variant font-medium font-label-md text-label-md hover:text-primary transition-colors" href="#">Kesenjangan Keahlian</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-bold font-label-md text-label-md" href="#">Peta Jalan</a>
+</nav>
+<div class="flex items-center gap-stack-md">
+<span class="material-symbols-outlined text-outline cursor-pointer" data-icon="account_circle">account_circle</span>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">Mulai Sekarang</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Progress Stepper -->
+<div class="flex justify-between items-center mb-stack-lg max-w-2xl mx-auto">
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-label-sm">1</div>
+<span class="text-label-sm font-label-sm text-outline">Profil</span>
+</div>
+<div class="h-[2px] flex-grow bg-primary mx-4"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-label-sm">2</div>
+<span class="text-label-sm font-label-sm text-outline">Asesmen</span>
+</div>
+<div class="h-[2px] flex-grow bg-primary mx-4"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-label-sm">3</div>
+<span class="text-label-sm font-label-sm text-outline">Kesenjangan</span>
+</div>
+<div class="h-[2px] flex-grow bg-primary mx-4"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-label-sm shadow-[0_0_0_4px_#e9ddff]">4</div>
+<span class="text-label-sm font-label-sm text-primary font-bold">Peta Jalan</span>
+</div>
+</div>
+<!-- Header Section -->
+<section class="mb-stack-lg text-center">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-2">Peta Jalan Strategis Upskilling Anda</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+                Berdasarkan target peran Anda sebagai <span class="text-primary font-bold">Senior Software Architect</span>, kami telah merancang rencana eksekusi tiga fase untuk menjembatani kesenjangan teknis dan kepemimpinan Anda.
+            </p>
+</section>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Timeline Column -->
+<div class="lg:col-span-8">
+<div class="relative pl-8 md:pl-12">
+<!-- Vertical Track -->
+<div class="absolute left-4 md:left-6 top-0 bottom-0 w-1 roadmap-line rounded-full opacity-20"></div>
+<!-- Phase 1 -->
+<div class="mb-stack-lg relative">
+<div class="absolute -left-8 md:-left-12 mt-1 w-8 h-8 rounded-full bg-primary flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-on-primary text-sm" data-icon="verified">verified</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-md">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-label-sm font-label-sm text-primary-container bg-primary px-2 py-0.5 rounded uppercase tracking-wider">Fase 1</span>
+<h3 class="font-headline-sm text-headline-sm mt-1 text-on-surface">Fundamental Sistem &amp; Dasar-dasar Terdistribusi</h3>
+</div>
+<span class="text-label-sm font-label-sm text-outline">Minggu 1-4</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 text-justify">
+                                Perkuat pengetahuan dasar Anda tentang sistem terdistribusi dan pola microservices. Fokus pada pemisahan struktur monolitik dan penerapan gateway API yang kuat.
+                            </p>
+<div class="space-y-stack-sm">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md text-on-surface">Keahlian yang Kurang: Pola Desain Berbasis Event</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-md text-label-md text-on-surface">Keahlian yang Kurang: Skalabilitas Database Ketersediaan Tinggi</span>
+</div>
+</div>
+<div class="mt-4 p-4 bg-surface-container-low rounded-lg border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="menu_book">menu_book</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Sumber Daya: Designing Data-Intensive Applications</p>
+<p class="font-label-sm text-label-sm text-outline">Panduan Standar Industri (O'Reilly Media)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Phase 2 -->
+<div class="mb-stack-lg relative">
+<div class="absolute -left-8 md:-left-12 mt-1 w-8 h-8 rounded-full bg-primary-container flex items-center justify-center z-10 ring-4 ring-surface">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary/30 rounded-xl p-stack-md shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-label-sm font-label-sm text-primary-fixed-dim bg-on-primary-fixed-variant px-2 py-0.5 rounded uppercase tracking-wider">Fase 2</span>
+<h3 class="font-headline-sm text-headline-sm mt-1 text-on-surface">Arsitektur Lanjutan &amp; Strategi Cloud</h3>
+</div>
+<span class="text-label-sm font-label-sm text-outline">Minggu 5-10</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 text-justify">
+                                Kuasai strategi penerapan multi-cloud dan prinsip-prinsip site reliability engineering (SRE). Anda akan beralih dari "membangun komponen" ke "mengorkestrasi ekosistem" dengan persyaratan tanpa waktu henti.
+                            </p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-primary-container/10 text-primary px-3 py-1 rounded-full text-label-sm font-label-sm border border-primary/20">AWS Solutions Architect Professional</span>
+<span class="bg-primary-container/10 text-primary px-3 py-1 rounded-full text-label-sm font-label-sm border border-primary/20">Kubernetes Security Specialist</span>
+</div>
+<div class="p-4 bg-primary-fixed/30 rounded-lg border border-primary-fixed-dim flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="school">school</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Kursus: Cloud Native Infrastructure Patterns</p>
+<p class="font-label-sm text-label-sm text-outline">Lokakarya yang dipimpin Ahli (A Cloud Guru)</p>
+</div>
+</div>
+<button class="text-primary font-bold text-label-sm">DAFTAR SEKARANG</button>
+</div>
+</div>
+</div>
+<!-- Phase 3 -->
+<div class="relative">
+<div class="absolute -left-8 md:-left-12 mt-1 w-8 h-8 rounded-full bg-surface-container-highest border-2 border-outline-variant flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="work">work</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-md">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant bg-surface-container-highest px-2 py-0.5 rounded uppercase tracking-wider">Fase 3</span>
+<h3 class="font-headline-sm text-headline-sm mt-1 text-on-surface">Kehadiran Eksekutif &amp; Kepemimpinan Teknis</h3>
+</div>
+<span class="text-label-sm font-label-sm text-outline">Minggu 11-14</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 text-justify">
+                                Langkah terakhir berfokus pada menjembatani celah antara keunggulan teknis dan strategi bisnis. Pelajari cara mengomunikasikan risiko teknis kepada pemangku kepentingan C-suite dan mengelola tinjauan arsitektur lintas fungsi.
+                            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-center gap-2 p-2 rounded bg-surface-container-low">
+<span class="material-symbols-outlined text-tertiary" data-icon="groups">groups</span>
+<span class="font-label-sm text-label-sm">Mentoring Arsitek Junior</span>
+</div>
+<div class="flex items-center gap-2 p-2 rounded bg-surface-container-low">
+<span class="material-symbols-outlined text-tertiary" data-icon="bar_chart">bar_chart</span>
+<span class="font-label-sm text-label-sm">Keputusan Teknologi Berbasis ROI</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Column (CTAs & Assets) -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Action Card -->
+<div class="bg-primary text-on-primary rounded-xl p-stack-md shadow-lg flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-4xl mb-2" data-icon="picture_as_pdf">picture_as_pdf</span>
+<h4 class="font-headline-sm text-headline-sm mb-2">Ekspor Strategi Anda</h4>
+<p class="font-body-sm text-body-sm opacity-90 mb-6 px-4 text-justify">Unduh peta jalan karier dan penilaian keahlian Anda dalam bentuk PDF resolusi tinggi yang dapat dicetak untuk dibagikan dengan manajer atau mentor Anda.</p>
+<button class="w-full bg-on-primary text-primary font-bold py-3 rounded-lg hover:bg-opacity-90 transition-all flex items-center justify-center gap-2">
+<span>Unduh Peta Jalan PDF</span>
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+</button>
+</div>
+<!-- Learning Pathways Grid -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-stack-md">
+<h4 class="font-label-md text-label-md text-on-surface font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="lightbulb">lightbulb</span>
+                        Jalur Akselerasi
+                    </h4>
+<div class="grid grid-cols-1 gap-stack-sm">
+<!-- CTA 1 -->
+<div class="group border border-outline-variant hover:border-primary p-3 rounded-lg transition-colors cursor-pointer">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-sm text-label-sm text-primary mb-1">SERTIFIKASI GRATIS</p>
+<h5 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Pengantar Desain Sistem</h5>
+</div>
+<span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-1.5 py-0.5 rounded">POPULER</span>
+</div>
+</div>
+<!-- CTA 2 -->
+<div class="group border border-outline-variant hover:border-primary p-3 rounded-lg transition-colors cursor-pointer">
+<p class="font-label-sm text-label-sm text-primary mb-1">LOKAKARYA GRATIS</p>
+<h5 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Anti-Pola Microservices</h5>
+</div>
+<!-- CTA 3 -->
+<div class="group border border-outline-variant hover:border-primary p-3 rounded-lg transition-colors cursor-pointer">
+<p class="font-label-sm text-label-sm text-primary mb-1">JALUR PREMIUM</p>
+<h5 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors">Paket Kepemimpinan Senior</h5>
+</div>
+</div>
+</div>
+<!-- Profile Insight -->
+<div class="relative rounded-xl overflow-hidden h-48 group">
+<img alt="Collaboration in modern office" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A group of diverse software professionals collaborating in a brightly lit, modern architectural office space with high ceilings and glass walls. They are gathered around a digital screen showing complex data visualizations and architecture diagrams. The atmosphere is professional, energetic, and focused, using a clean corporate color palette of soft whites and deep indigos." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj68aUcnWhHqMOT1rZGu8lAwh1hGpdygFc1_v4MvkdLaYW0uLBVusApYdIneLyWVhIQr-yAny0eWy8VjZzmAZWBEEywtPdvaQMb6Ql1XwzouxTzUHi25_aXb5EKuU6x7JW8_urrD-eZQv9FKB7Uklv4DvKPbV5fNJL8JM1uM9IClzQSPqDCBFwK2pqKtYVYvlAadDFPTXqnnsr2EpsOTj_eZgQyYPQPF2fFYkneiR51X9TATrHwBhmgy9tYR7RStAGIdWUAiRYnzY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex flex-col justify-end p-4">
+<p class="text-on-primary font-bold text-label-md mb-1 italic">"Jalur terpendek menuju puncak adalah iterasi yang berkelanjutan."</p>
+<p class="text-on-primary/80 text-label-sm">AI Mentor Karier</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-outline-variant mt-stack-lg">
+<div class="py-stack-lg px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-stack-md">
+<div class="flex flex-col md:items-start items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-primary">Career Navigator</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center md:text-left">© 2024 Sistem Pakar Career Navigator. Seluruh hak cipta dilindungi undang-undang.</p>
+</div>
+<div class="flex gap-stack-md">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline decoration-primary" href="#">Kebijakan Privasi</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline decoration-primary" href="#">Syarat Layanan</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline decoration-primary" href="#">Dokumentasi Teknis</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline decoration-primary" href="#">Dukungan</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction: Smooth hover for timeline cards
+        document.querySelectorAll('.bg-surface-container-lowest').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('translate-x-1', 'transition-transform');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('translate-x-1');
+            });
+        });
+    </script>
+</body></html>
