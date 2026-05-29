@@ -1,9 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
+import { apiGet } from '../api'
 
 export default function ProfileSelection() {
+  const navigate = useNavigate()
+  const [roles, setRoles] = useState([])
   const [selectedRole, setSelectedRole] = useState(null)
   const [educationField, setEducationField] = useState('')
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId')
+    if (!userId) {
+      navigate('/')
+      return
+    }
+    apiGet('/roles')
+      .then(data => setRoles(data))
+      .catch(err => alert('Gagal memuat data: ' + err.message))
+      .finally(() => setLoading(false))
+  }, [navigate])
 
   function selectRole(index) {
     setSelectedRole(index)
@@ -11,13 +28,19 @@ export default function ProfileSelection() {
 
   const isFormValid = selectedRole !== null && educationField !== ''
 
-  const roles = [
-    { category: 'ENGINEERING', title: 'Software Engineer', desc: 'Fokus pada arsitektur sistem dan skalabilitas perangkat lunak.' },
-    { category: 'PRODUCT', title: 'Product Manager', desc: 'Menyelaraskan kebutuhan bisnis, teknologi, dan pengguna.' },
-    { category: 'DATA', title: 'Data Scientist', desc: 'Analisis prediktif dan pemodelan statistik tingkat lanjut.' },
-    { category: 'DESIGN', title: 'UI/UX Designer', desc: 'Membangun pengalaman visual dan fungsional yang intuitif.' },
-    { category: 'BUSINESS', title: 'Business Analyst', desc: 'Optimasi proses bisnis melalui wawasan berbasis data.' },
-  ]
+  function handleContinue() {
+    if (!isFormValid) return
+    localStorage.setItem('roleId', String(roles[selectedRole].id))
+    navigate('/loading')
+  }
+
+  if (loading) {
+    return (
+      <div className="bg-surface text-on-surface min-h-screen flex items-center justify-center">
+        <p className="font-body-lg">Memuat data...</p>
+      </div>
+    )
+  }
 
   return (
     <div className="bg-surface text-on-surface font-body-md flex flex-col min-h-screen">
@@ -39,7 +62,7 @@ export default function ProfileSelection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-stack-md">
                 {roles.map((role, index) => (
                   <button
-                    key={index}
+                    key={role.id}
                     onClick={() => selectRole(index)}
                     className={`flex flex-col p-stack-md border rounded-lg transition-all-custom text-left hover:border-primary group ${
                       selectedRole === index
@@ -49,13 +72,9 @@ export default function ProfileSelection() {
                   >
                     <span className="font-label-sm text-label-sm text-primary mb-2">{role.category}</span>
                     <span className="font-headline-sm text-headline-sm text-on-surface">{role.title}</span>
-                    <p className="font-body-sm text-body-sm text-on-surface-variant mt-2">{role.desc}</p>
+                    <p className="font-body-sm text-body-sm text-on-surface-variant mt-2">{role.description}</p>
                   </button>
                 ))}
-                <div className="flex flex-col p-stack-md border border-dashed border-outline-variant bg-surface-container-low rounded-lg justify-center items-center text-center cursor-pointer hover:bg-surface-container-high transition-colors">
-                  <span className="material-symbols-outlined text-outline mb-2">add_circle</span>
-                  <span className="font-label-md text-label-md text-outline">Pilih Target Lain</span>
-                </div>
               </div>
             </div>
 
@@ -88,7 +107,7 @@ export default function ProfileSelection() {
                     <span className="material-symbols-outlined text-primary mt-1">info</span>
                     <div>
                       <span className="font-label-sm text-label-sm text-on-surface font-bold">Catatan Sistem</span>
-                      <p className="font-body-sm text-body-sm text-on-surface-variant">Data pendidikan akan digunakan untuk memetakan 'Skill Gap' yang relevan dengan target karier Anda.</p>
+                      <p className="font-body-sm text-body-sm text-on-surface-variant">Data pendidikan akan digunakan untuk memetakan Skill Gap yang relevan dengan target karier Anda.</p>
                     </div>
                   </div>
                 </div>
@@ -96,37 +115,26 @@ export default function ProfileSelection() {
             </div>
 
             <div className="md:col-span-12 mt-stack-lg">
-  <div className="bg-inverse-surface text-inverse-on-surface p-stack-lg rounded-xl flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 overflow-hidden relative">
-    
-    {/* Teks Kiri */}
-    <div className="relative z-10">
-      <h3 className="font-headline-sm text-headline-sm mb-2">Kalkulasi Presisi</h3>
-      <p className="font-body-md text-body-md opacity-80 max-w-md">
-        Algoritma kami akan memproses data Anda untuk menyusun roadmap pengembangan kompetensi berbasis standar industri global.
-      </p>
-    </div>
-    
-    {/* Container Badge (Bungkus otomatis tanpa scroll) */}
-    <div className="flex flex-wrap gap-3 relative z-10 w-full lg:w-auto">
-      <div className="px-4 py-2 border border-outline rounded-full bg-white/10 backdrop-blur-md font-label-md text-label-md text-center">
-        Expert Mentorship
-      </div>
-      <div className="px-4 py-2 border border-outline rounded-full bg-white/10 backdrop-blur-md font-label-md text-label-md text-center">
-        Skill Assessment
-      </div>
-      <div className="px-4 py-2 border border-outline rounded-full bg-white/10 backdrop-blur-md font-label-md text-label-md text-center">
-        Job Matching
-      </div>
-    </div>
-    
-    {/* Efek Lingkaran Blur */}
-    <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-primary opacity-20 rounded-full blur-3xl pointer-events-none"></div>
-  </div>
-</div>
+              <div className="bg-inverse-surface text-inverse-on-surface p-stack-lg rounded-xl flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 overflow-hidden relative">
+                <div className="relative z-10">
+                  <h3 className="font-headline-sm text-headline-sm mb-2">Kalkulasi Presisi</h3>
+                  <p className="font-body-md text-body-md opacity-80 max-w-md">
+                    Algoritma kami akan memproses data Anda untuk menyusun roadmap pengembangan kompetensi berbasis standar industri global.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-3 relative z-10 w-full lg:w-auto">
+                  <div className="px-4 py-2 border border-outline rounded-full bg-white/10 backdrop-blur-md font-label-md text-label-md text-center">Expert Mentorship</div>
+                  <div className="px-4 py-2 border border-outline rounded-full bg-white/10 backdrop-blur-md font-label-md text-label-md text-center">Skill Assessment</div>
+                  <div className="px-4 py-2 border border-outline rounded-full bg-white/10 backdrop-blur-md font-label-md text-label-md text-center">Job Matching</div>
+                </div>
+                <div className="absolute -right-10 -bottom-10 w-64 h-64 bg-primary opacity-20 rounded-full blur-3xl pointer-events-none"></div>
+              </div>
+            </div>
           </div>
 
           <div className="mt-stack-lg flex flex-col items-center gap-stack-md pb-stack-lg">
-            <a href="/loading"
+            <button
+              onClick={handleContinue}
               disabled={!isFormValid}
               className={`w-full md:w-80 h-12 bg-primary text-on-primary rounded font-label-md text-label-md font-bold shadow-sm hover:brightness-110 active:opacity-80 transition-all-custom flex items-center justify-center gap-stack-sm ${
                 !isFormValid ? 'opacity-50 cursor-not-allowed' : ''
@@ -134,13 +142,11 @@ export default function ProfileSelection() {
             >
               Lanjutkan ke Asesmen
               <span className="material-symbols-outlined">arrow_forward</span>
-            </a>
+            </button>
             <p className="font-body-sm text-body-sm text-on-surface-variant">Proses ini memakan waktu sekitar 10-15 menit.</p>
           </div>
         </div>
       </main>
-
-      
     </div>
   )
 }
